@@ -3,6 +3,7 @@ package Raytracer;
 import Jama.Matrix;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.JFrame;
 
 public class Raytracer extends JFrame {
@@ -37,15 +38,90 @@ public class Raytracer extends JFrame {
         ArrayList<Objeto> ob = new ArrayList<>();
         //Pega todas as luzes (trabalharei só com uma por hora)
         ArrayList<Luz> luz = new ArrayList<>();
-
+        
         //Calculo do tmenor
         Pixel inter;
         double tmenor;
         int indob;
-
-        //Chama cena, raio, camera, pixel;
+        
+        //Criação da cena
         Cenas ce = new Cenas();
-        ce.lerObj("C:\\Users\\Pedro H\\Desktop\\Faculdade\\CG\\150 - Mewtwo\\BR_Mewtwo.obj");
+        
+        Scanner ok = new Scanner(System.in);
+        
+        int op=1;
+        while(op!=0){
+        Scanner ler = new Scanner(System.in);
+        ler.reset();
+        System.out.println("1 - Adicionar Circulo");
+        System.out.println("2 - Adicionar Luz");
+        System.out.println("3 - Ler OBJ");
+        System.out.println("0 - RayTracer");
+        op = ler.nextInt();
+        
+        switch(op){
+            case 1:
+                ok = new Scanner(System.in);
+                ok.reset();
+                System.out.println("Digite os pontos X,Y,Z do centro da esfera(separado por virgula)");
+                String cord = ok.nextLine();
+                String[] separa = cord.split(",");
+                int x = Integer.parseInt(separa[0]);
+                int y = Integer.parseInt(separa[1]);
+                int z = Integer.parseInt(separa[2]);
+                ok.reset();
+                System.out.println("Digite o tamanho do Raio da sua esfera");
+                int r = ok.nextInt();
+                ok.reset();
+                System.out.println("Digite a cor RED da sua esfera");
+                int cr = ok.nextInt();
+                ok.reset();
+                System.out.println("Digite a cor GREEN da sua esfera");
+                int cg = ok.nextInt();
+                ok.reset();
+                System.out.println("Digite a cor BLUE da sua esfera");
+                int cb = ok.nextInt();
+                ok.reset();
+                System.out.println("Sua esfera terá reflexão? 0-Nao  1-Sim");
+                int refle = ok.nextInt();
+                ok.reset();
+                Esfera e = new Esfera(x,y,z,r,cr,cg,cb,255,255,255,refle);
+                ce.addEsferaCena(e);
+                break;
+            case 2:
+                ok = new Scanner(System.in);
+                 ok.reset();
+                System.out.println("Digite os pontos X,Y,Z da luz(separado por virgula)");
+                String luzcod = ok.nextLine();
+                String[] sp = luzcod.split(",");
+                double xl = Double.valueOf(sp[0]);
+                double yl = Double.valueOf(sp[1]);
+                double zl = Double.valueOf(sp[2]);
+                ok.reset();
+                System.out.println("Digite a intensidade R,G,B da luz (separado por virgula)");
+                ok.reset();
+                String luzint = ok.nextLine();
+                String[] sep = luzcod.split(",");
+                double irl = Double.valueOf(sep[0]);
+                double igl = Double.valueOf(sep[1]);
+                double ibl = Double.valueOf(sep[2]);
+                ok.reset();
+                Luz nlc = new Luz(xl,yl,zl,irl,igl,ibl);
+                ce.addLuz(nlc);
+                break;
+                case 3:
+                    ce.lerObj("C:\\Users\\Pedro H\\Desktop\\Faculdade\\CG\\150 - Mewtwo\\OK.obj");
+                    break;
+                case 5:
+                    break;
+        }
+        
+        }
+        
+        
+        //Chama cena, raio, camera, pixel;
+        
+        ce.CriarCena();
         Raio r;
         Camera c = new Camera(1024, 768, 4, 3, 1);
         Pixel px = new Pixel();

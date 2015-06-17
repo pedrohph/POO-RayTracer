@@ -15,7 +15,7 @@ public class Cenas {
     double intensidade;
     ArrayList<Luz> luz = new ArrayList<>();
     ArrayList<Vetor> vet = new ArrayList<>();
-
+    
     public void CriarCena() {
     
         /* Esfera e = new Esfera(1,2,0.4,1, 255, 0, 0, 0,0,0, 0);
@@ -122,16 +122,16 @@ public class Cenas {
         
         cor = new Vetor(0, 0, 0);
         intensidade = 1;*/
-        
+        /*
         Esfera e = new Esfera(15,0,30,10,255,0,0,255,255,255,1);
         this.ob.add(e);
         
         e = new Esfera(25,0,10,10,0,255,0,255,255,255,1);
         this.ob.add(e);
         
-         e = new Esfera(1,0.8,2,0.2,0,0,255,255,255,255,1);
+        e = new Esfera(1,0.8,2,0.2,0,0,255,255,255,255,1);
         this.ob.add(e);
-
+        
         Vetor a = new Vetor(0, 500, 500);
         Vetor b = new Vetor(2500, -1000, 500);
         Vetor c = new Vetor(-1500, -1000, 500);
@@ -140,18 +140,21 @@ public class Cenas {
         this.ob.add(t);
         
         
-         Luz l = new Luz(0,0,40,1,1,1);
+        Luz l = new Luz(0,0,40,1,1,1);
         this.luz.add(l);
         l = new Luz(0,0,0,1,1,1);
-        this.luz.add(l);
-
+        this.luz.add(l);*/
         cor = new Vetor(0, 0, 0);
         intensidade = 1;
       
     }
 
     public void addEsferaCena(Objeto objeto) {
-        listaDeObj.add(objeto);
+        ob.add(objeto);
+    }
+    
+    public void addLuz(Luz l){
+        luz.add(l);
     }
 
     public ArrayList getLuz() {
