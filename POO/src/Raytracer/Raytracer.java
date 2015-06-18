@@ -110,7 +110,7 @@ public class Raytracer extends JFrame {
                 ce.addLuz(nlc);
                 break;
                 case 3:
-                    ce.lerObj("C:\\Users\\Pedro H\\Desktop\\Faculdade\\CG\\150 - Mewtwo\\OK.obj");
+                    ce.lerObj("C:\\Users\\Pedro H\\Desktop\\Faculdade\\CG\\150 - Mewtwo\\BR_Mewtwo.obj");
                     break;
                 case 5:
                     break;

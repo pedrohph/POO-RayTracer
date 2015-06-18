@@ -63,7 +63,7 @@ public class Vetor {
 
     /**Método getY, utilizado para receber informação do valor do ponto Y
      * 
-     * @return double - Valor do ponto Y desse vetor 
+     * @return double - Valor do ponto Y desse vetor  
      */
     public double getY() {
         return y;
